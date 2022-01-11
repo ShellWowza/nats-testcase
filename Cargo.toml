@@ -1,0 +1,12 @@
+[package]
+name = "nats-drop"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+nats = "0.16.0"
+slog = "2.7.0"
+slog-async = "2.7.0"
+slog-term = "2.8.0"
