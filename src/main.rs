@@ -6,7 +6,7 @@ fn main() {
     let drain = slog_async::Async::new(drain).build().fuse();
     let logger = slog::Logger::root(drain, slog::o!());
 
-    let _connection = nats::Options::with_user_pass("test", "123")
+    let connection = nats::Options::with_user_pass("test", "123")
         .reconnect_callback({
             let logger = logger.clone();
             move || slog::info!(logger, "reconnected")
@@ -21,4 +21,7 @@ fn main() {
     for _ in 0..200 {
         slog::info!(logger, "padding out the logs");
     }
+
+    // The presence of close or not doesn't matter
+    connection.close();
 }
